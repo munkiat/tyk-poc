@@ -63,7 +63,7 @@ HTTP 200
 POST http://tyk-dashboard:3000/api/apis/oas
 authorization: {{user_api_key}}
 Content-Type: application/json
-file,apis/tykoas-121f4dee410443c44c67343872416c4a.json;
+file,apis/tykoas-3e5fe31f9d0a472a6e2366f42bfae23e.json;
 HTTP 200
 [Captures]
 api_id: jsonpath "$.ID"
@@ -87,7 +87,7 @@ Content-Type: application/json
         }
     },
     "active": true,
-    "name": "Test API Access",
+    "name": "HTTPBIN API Access",
     "org_id": "{{org_id}}",
     "per": -1,
     "rate": -1,

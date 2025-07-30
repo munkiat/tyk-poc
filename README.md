@@ -35,8 +35,8 @@ Your Tyk Gateway URL is http://localhost:8080
 ---------------------------
 Your Developer Portal URL is http://localhost:3001
 
-user: portaladmin@tyk.io
-pw: 1fty377f
+admin user: portaladmin@tyk.io
+admin pw: 1fty377f
 ---------------------------
 ```
 
