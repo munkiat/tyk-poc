@@ -10,9 +10,15 @@
 
 ### Deploying Tyk
 
-1. Clone the repo: `git clone https://github.com/TykTechnologies/tyk-pro-docker-demo && cd tyk-pro-docker-demo`
+1. Clone the repo: 
+```
+git clone https://github.com/TykTechnologies/tyk-pro-docker-demo && cd tyk-pro-docker-demo
+```
 
 2. Add your Tyk Dashboard license to .env (see .env.example) 
+```
+DASH_LICENSE=<YOUR_LICENSE>
+```
 
 3. Run `docker-compose up`
 
@@ -35,8 +41,6 @@ pw: 1fty377f
 ### Cleanup Docker Containers
 
 To delete all docker containers as well as remove all volumes from your host:
-
-PostgreSQL:
 
 ```
 $ docker-compose down -v
