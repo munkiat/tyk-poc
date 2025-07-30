@@ -10,7 +10,7 @@
 
 ### Deploying Tyk
 
-1. Close the repo: `git clone https://github.com/TykTechnologies/tyk-pro-docker-demo && cd tyk-pro-docker-demo`
+1. Clone the repo: `git clone https://github.com/TykTechnologies/tyk-pro-docker-demo && cd tyk-pro-docker-demo`
 
 2. Add your Tyk Dashboard license to .env (see .env.example) 
 
@@ -22,14 +22,14 @@ Your Tyk Dashboard URL is http://localhost:3000
 
 user: developer@tyk.io
 pw: 1fty377f
-
+---------------------------
 Your Tyk Gateway URL is http://localhost:8080
-
+---------------------------
 Your Developer Portal URL is http://localhost:3001
 
 user: portaladmin@tyk.io
 pw: 1fty377f
-
+---------------------------
 ```
 
 ### Cleanup Docker Containers
