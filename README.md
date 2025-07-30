@@ -15,7 +15,7 @@
 git clone https://github.com/munkiat/tyk-poc && cd tyk-poc
 ```
 
-2. Add your Tyk Dashboard license to .env (see .env.example) 
+2. Create a .env file with the below variables (see .env.example) 
 ```
 DASH_LICENSE=<YOUR_LICENSE>
 ```
