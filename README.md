@@ -20,7 +20,9 @@ git clone https://github.com/munkiat/tyk-poc && cd tyk-poc
 DASH_LICENSE=<YOUR_LICENSE>
 ```
 
-3. Run `docker-compose up`
+3. Run `docker-compose up -d`
+
+### Accessing your Tyk installation
 
 ```
 ---------------------------
@@ -40,10 +42,6 @@ pw: 1fty377f
 
 ### Cleanup Docker Containers
 
-To delete all docker containers as well as remove all volumes from your host:
-
-```
-$ docker-compose down -v
-```
+To delete all docker containers as well as remove all volumes from your host run: `docker-compose down -v`
 
 
