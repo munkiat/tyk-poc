@@ -12,7 +12,7 @@
 
 1. Clone the repo: 
 ```
-git clone https://github.com/TykTechnologies/tyk-pro-docker-demo && cd tyk-pro-docker-demo
+git clone https://github.com/munkiat/tyk-poc && cd tyk-poc
 ```
 
 2. Add your Tyk Dashboard license to .env (see .env.example) 
