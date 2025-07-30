@@ -36,9 +36,9 @@ Content-Type: application/json
 admin-auth: 12345
 {
   "org_id": "{{org_id}}",
-  "first_name": "Dev",
+  "first_name": "Tyk",
   "last_name": "Trial",
-  "email_address": "dev@tyk.io",
+  "email_address": "developer@tyk.io",
   "active": true,
   "user_permissions": { "IsAdmin": "admin" }
 }
@@ -54,7 +54,7 @@ POST http://tyk-dashboard:3000/api/users/{{user_id}}/actions/reset
 Content-Type: application/json
 authorization: {{user_api_key}}
 {
-  "new_password":"123123",
+  "new_password":"1fty377f",
   "user_permissions": { "IsAdmin": "admin" }
 }
 HTTP 200
@@ -215,8 +215,8 @@ status == 200
 POST http://host.docker.internal:3001/portal-api/bootstrap
 Content-Type: application/json
 {
-    "username": "admin@tyk.io",
-    "password": "123123",
+    "username": "portaladmin@tyk.io",
+    "password": "1fty377f",
     "first_name": "Admin",
     "last_name": "User"
 }
