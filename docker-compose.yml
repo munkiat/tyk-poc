@@ -80,6 +80,14 @@ services:
     networks:
       - tyk
 
+  httpbin:
+    image: mccutchen/go-httpbin:v2.13.4
+    container_name: httpbin
+    ports:
+      - "8081:8080"
+    networks:
+      - tyk
+
   tyk-bootstrap:
     image: ghcr.io/orange-opensource/hurl:latest
     container_name: tyk-bootstrap

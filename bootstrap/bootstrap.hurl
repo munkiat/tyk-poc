@@ -63,7 +63,7 @@ HTTP 200
 POST http://tyk-dashboard:3000/api/apis/oas
 authorization: {{user_api_key}}
 Content-Type: application/json
-file,apis/tykoas-3e5fe31f9d0a472a6e2366f42bfae23e.json;
+file,apis/tykoas-d4e09792ed71458c667c1c822615757e-2.json;
 HTTP 200
 [Captures]
 api_id: jsonpath "$.ID"
