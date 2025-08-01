@@ -243,6 +243,16 @@
         "summary": "Return sample JSON"
       }
     },
+    "/mock": {
+      "get": {
+        "operationId": "mockget",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/redirect-to": {
       "get": {
         "operationId": "redirect-toGET",
@@ -613,7 +623,10 @@
   ],
   "x-tyk-api-gateway": {
     "info": {
+      "dbId": "688c855ec8f8e000018bf22c",
+      "id": "a1c0f72e7e6743b95198b0faf5067d27",
       "name": "httpbingo API",
+      "orgId": "688c855ec8f8e000018bf22a",
       "state": {
         "active": true
       }
@@ -675,6 +688,22 @@
         "jsonGET": {
           "allow": {
             "enabled": true
+          }
+        },
+        "mockget": {
+          "allow": {
+            "enabled": true
+          },
+          "mockResponse": {
+            "body": "{\n  \"message\": \"This is a Tyk Mock Response!\"\n}",
+            "code": 200,
+            "enabled": true,
+            "headers": [
+              {
+                "name": "content-type",
+                "value": "application/json"
+              }
+            ]
           }
         },
         "redirect-toGET": {

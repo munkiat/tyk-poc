@@ -63,7 +63,7 @@ HTTP 200
 POST http://tyk-dashboard:3000/api/apis/oas
 authorization: {{user_api_key}}
 Content-Type: application/json
-file,apis/tykoas-d4e09792ed71458c667c1c822615757e-2.json;
+file,apis/tykoas-a1c0f72e7e6743b95198b0faf5067d27.json;
 HTTP 200
 [Captures]
 api_id: jsonpath "$.ID"
@@ -79,7 +79,7 @@ Content-Type: application/json
         "{{api_id}}": {
             "allowed_urls": [],
             "api_id": "{{api_id}}",
-            "api_name": "test",
+            "api_name": "httpbingo API",
             "limit": null,
             "versions": [
                 "Default"
@@ -126,7 +126,7 @@ Content-Type: application/json
         "{{api_id}}": {
             "allowed_urls": [],
             "api_id": "{{api_id}}",
-            "api_name": "test",
+            "api_name": "httpbingo API",
             "limit": null,
             "versions": [
                 "Default"
@@ -173,7 +173,7 @@ Content-Type: application/json
         "{{api_id}}": {
             "allowed_urls": [],
             "api_id": "{{api_id}}",
-            "api_name": "test",
+            "api_name": "httpbingo API",
             "limit": null,
             "versions": [
                 "Default"
