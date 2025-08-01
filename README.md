@@ -29,14 +29,14 @@ DASH_LICENSE=<YOUR_LICENSE>
 Your Tyk Dashboard URL is http://localhost:3000
 
 user: developer@tyk.io
-pw: 1fty377f
+pw: specialpassword
 ---------------------------
 Your Tyk Gateway URL is http://localhost:8080
 ---------------------------
 Your Developer Portal URL is http://localhost:3001
 
 admin user: portaladmin@tyk.io
-admin pw: 1fty377f
+admin pw: specialpassword
 ---------------------------
 ```
 
