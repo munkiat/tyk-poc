@@ -59,14 +59,25 @@ authorization: {{user_api_key}}
 }
 HTTP 200
 
-# Import OAS API
+# Import HTTPBingo OAS API
 POST http://tyk-dashboard:3000/api/apis/oas
 authorization: {{user_api_key}}
 Content-Type: application/json
 file,apis/tykoas-a1c0f72e7e6743b95198b0faf5067d27.json;
 HTTP 200
 [Captures]
-api_id: jsonpath "$.ID"
+httpbingo_api_id: jsonpath "$.ID"
+[Asserts]
+status == 200
+
+# Import F1 OAS API
+POST http://tyk-dashboard:3000/api/apis/oas
+authorization: {{user_api_key}}
+Content-Type: application/json
+file,apis/tykoas-9cf3694bac08471d6990a7b16aeacb0a.json;
+HTTP 200
+[Captures]
+f1_api_id: jsonpath "$.ID"
 [Asserts]
 status == 200
 
@@ -76,9 +87,9 @@ Authorization: {{user_api_key}}
 Content-Type: application/json
 {
     "access_rights": {
-        "{{api_id}}": {
+        "{{httpbingo_api_id}}": {
             "allowed_urls": [],
-            "api_id": "{{api_id}}",
+            "api_id": "{{httpbingo_api_id}}",
             "api_name": "httpbingo API",
             "limit": null,
             "versions": [
@@ -123,9 +134,9 @@ Authorization: {{user_api_key}}
 Content-Type: application/json
 {
     "access_rights": {
-        "{{api_id}}": {
+        "{{httpbingo_api_id}}": {
             "allowed_urls": [],
-            "api_id": "{{api_id}}",
+            "api_id": "{{httpbingo_api_id}}",
             "api_name": "httpbingo API",
             "limit": null,
             "versions": [
@@ -170,9 +181,9 @@ Authorization: {{user_api_key}}
 Content-Type: application/json
 {
     "access_rights": {
-        "{{api_id}}": {
+        "{{httpbingo_api_id}}": {
             "allowed_urls": [],
-            "api_id": "{{api_id}}",
+            "api_id": "{{httpbingo_api_id}}",
             "api_name": "httpbingo API",
             "limit": null,
             "versions": [
@@ -208,6 +219,127 @@ Content-Type: application/json
 HTTP 200
 [Captures]
 production_policy_id: jsonpath "$.Message"
+[Asserts]
+status == 200
+
+# Create F1 API Policy with rate limiting (4 calls per 15 seconds)
+POST http://tyk-dashboard:3000/api/portal/policies/
+Authorization: {{user_api_key}}
+Content-Type: application/json
+{
+    "access_rights": {
+        "{{f1_api_id}}": {
+            "allowed_urls": [],
+            "api_id": "{{f1_api_id}}",
+            "api_name": "F1 API",
+            "limit": null,
+            "versions": [
+                "Default"
+            ]
+        }
+    },
+    "active": true,
+    "name": "F1 API access",
+    "org_id": "{{org_id}}",
+    "per": 15,
+    "rate": 4,
+    "quota_max": -1,
+    "quota_remaining": -1,
+    "quota_renewal_rate": -1,
+    "quota_renews": -1,
+    "throttle_interval": -1,
+    "throttle_retry_limit": -1,
+    "tags": [],
+    "allowance": 0,
+    "auth_type": "other",
+    "expires": 0,
+    "key_expires_in": 0,
+    "last_check": 0
+}
+HTTP 200
+[Captures]
+f1_policy_id: jsonpath "$.Message"
+[Asserts]
+status == 200
+
+# Update F1 API defaultPolicies with the created policy
+PUT http://tyk-dashboard:3000/api/apis/oas/{{f1_api_id}}
+authorization: {{user_api_key}}
+Content-Type: application/json
+{
+  "components": {
+    "securitySchemes": {
+      "jwtAuth": {
+        "bearerFormat": "JWT",
+        "scheme": "bearer",
+        "type": "http"
+      }
+    }
+  },
+  "info": {
+    "title": "F1 API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {},
+  "security": [
+    {
+      "jwtAuth": []
+    }
+  ],
+  "servers": [
+    {
+      "url": "http://localhost:8080/f1-api/"
+    }
+  ],
+  "x-tyk-api-gateway": {
+    "info": {
+      "name": "F1 API",
+      "state": {
+        "active": true
+      }
+    },
+    "middleware": {
+      "global": {
+        "contextVariables": {
+          "enabled": true
+        },
+        "trafficLogs": {
+          "enabled": true
+        }
+      }
+    },
+    "server": {
+      "authentication": {
+        "enabled": true,
+        "securitySchemes": {
+          "jwtAuth": {
+            "defaultPolicies": [
+              "{{f1_policy_id}}"
+            ],
+            "enabled": true,
+            "header": {
+              "enabled": true,
+              "name": "Authorization"
+            },
+            "identityBaseField": "sub",
+            "policyFieldName": "pol",
+            "signingMethod": "hmac",
+            "source": "dG9wc3BlY2lhbDI1NnNoYXJlZGJpdGxvbmdzZWNyZXQ="
+          }
+        }
+      },
+      "listenPath": {
+        "strip": true,
+        "value": "/f1-api/"
+      }
+    },
+    "upstream": {
+      "url": "https://f1api.dev/api"
+    }
+  }
+}
+HTTP 200
 [Asserts]
 status == 200
 

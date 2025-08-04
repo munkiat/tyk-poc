@@ -623,10 +623,7 @@
   ],
   "x-tyk-api-gateway": {
     "info": {
-      "dbId": "688c855ec8f8e000018bf22c",
-      "id": "a1c0f72e7e6743b95198b0faf5067d27",
       "name": "httpbingo API",
-      "orgId": "688c855ec8f8e000018bf22a",
       "state": {
         "active": true
       }
