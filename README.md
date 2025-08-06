@@ -12,7 +12,7 @@
 
 1. Clone the repo: 
 ```
-git clone https://github.com/munkiat/tyk-poc && cd tyk-poc
+git clone https://github.com/TykTechnologies/tyk-self-managed-trial && cd tyk-self-managed-trial
 ```
 
 2. Create a .env file with the below variables (see .env.example) 
